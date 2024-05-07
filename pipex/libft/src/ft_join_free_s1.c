@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_join_free_s1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngaulthi <ngaulthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 14:53:27 by ngaulthi          #+#    #+#             */
-/*   Updated: 2024/05/04 23:54:39 by ngaulthi         ###   ########.fr       */
+/*   Created: 2024/04/30 18:24:43 by ngaulthi          #+#    #+#             */
+/*   Updated: 2024/05/06 18:51:36 by ngaulthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_join_free_s1(char *s1, char const *s2)
 {
 	char	*join;
 	int		i;
 	int		j;
 
 	if (!s1 || !s2)
-		return (NULL);
+		return (free (s1), NULL);
 	i = 0;
 	j = 0;
 	join = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!join)
-		return (NULL);
+		return (free (s1), NULL);
 	while (i < (int)ft_strlen(s1))
 	{
 		join[i] = s1[i];
@@ -37,5 +37,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	join[i] = '\0';
+	free(s1);
 	return (join);
 }
